@@ -26,8 +26,12 @@ def fetch_alerts():
     return None
 
 
-if __name__ == "__main__":
+def track_alerts():
     while True:
         print("**************************")
         fetch_alerts()
         time.sleep(1)
+
+
+if __name__ == "__main__":
+    track_alerts()
