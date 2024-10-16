@@ -3,6 +3,7 @@ import json
 import time
 
 PIKOD_HAOREF_ALERTS_JSON_URL = "https://www.oref.org.il/warningMessages/alert/Alerts.json"
+TIME_BETWEEN_ALERTS_UPDATES_SECONDS = 1
 
 
 def fetch_alerts():
@@ -22,6 +23,9 @@ def fetch_alerts():
     except json.JSONDecodeError as exception:
         print(f"JSON decoding error: {exception}")
 
+    except Exception as exception:
+        print(f"An unexpected error occurred: {exception}")
+
     print("No alerts found or error occurred.")
     return None
 
@@ -30,7 +34,7 @@ def track_alerts():
     while True:
         print("**************************")
         fetch_alerts()
-        time.sleep(1)
+        time.sleep(TIME_BETWEEN_ALERTS_UPDATES_SECONDS)
 
 
 if __name__ == "__main__":
