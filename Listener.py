@@ -12,26 +12,22 @@ def fetch_alerts():
 
         print("Raw response:", response.text)
 
-        if not response.text.strip():
-            print("No alerts found or error occurred.")
-            return None
-
         data = json.loads(response.text)
+        print("Fetched alerts:", data)
         return data
 
-    except requests.exceptions.RequestException as e:
-        print(f"Request error: {e}")
-    except json.JSONDecodeError as e:
-        print(f"JSON decoding error: {e}")
+    except requests.exceptions.RequestException as exception:
+        print(f"Request error: {exception}")
+
+    except json.JSONDecodeError as exception:
+        print(f"JSON decoding error: {exception}")
+
+    print("No alerts found or error occurred.")
     return None
 
 
 if __name__ == "__main__":
     while True:
-        alerts = fetch_alerts()
-        if alerts:
-            print("Fetched alerts:", alerts)
-        else:
-            print("No alerts found or error occurred.")
-
+        print("**************************")
+        fetch_alerts()
         time.sleep(1)
