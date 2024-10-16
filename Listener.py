@@ -2,12 +2,12 @@ import requests
 import json
 import time
 
-url = "https://www.oref.org.il/warningMessages/alert/Alerts.json"
+PIKOD_HAOREF_ALERTS_JSON_URL = "https://www.oref.org.il/warningMessages/alert/Alerts.json"
 
 
 def fetch_alerts():
     try:
-        response = requests.get(url)
+        response = requests.get(PIKOD_HAOREF_ALERTS_JSON_URL)
         response.raise_for_status()
 
         print("Raw response:", response.text)
