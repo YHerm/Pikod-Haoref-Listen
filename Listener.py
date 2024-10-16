@@ -8,9 +8,8 @@ url = "https://www.oref.org.il/warningMessages/alert/Alerts.json"
 def fetch_alerts():
     try:
         response = requests.get(url)
-        response.raise_for_status()  # Raises an error for bad responses (4xx or 5xx)
+        response.raise_for_status()
 
-        # Print the raw response
         print("Raw response:", response.text)
 
         if not response.text.strip():
